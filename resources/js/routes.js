@@ -2,13 +2,16 @@ import { createRouter, createWebHistory } from 'vue-router'
 import store from './store.js'
 
 // pages
-import Dashboard from './pages/Dashboard.vue'
+import Navigation1 from './pages/Navigation1.vue'
+import Navigation2 from './pages/Navigation2.vue'
+import Navigation3 from './pages/Navigation3.vue'
+import CrudTemplate from './pages/CrudTemplate.vue'
+
+
 import Login from './pages/Auth/Login.vue'
 import Subscribe from './pages/Subscribe.vue'
 import NotFoundComponent from './pages/Error/error_404.vue'
 import HowItWorks from './pages/HowItWorks.vue'
-import ProductList from './pages/ProductList.vue'
-import BasketItems from './pages/BasketItems.vue'
 import Basket from './pages/Basket.vue'
 import Additional from './pages/Additional.vue'
 import SignUp from './pages/SignUp.vue'
@@ -31,7 +34,7 @@ const permissions = user_data !== null && user_data !== undefined ? user_data.pe
 const routes = [
     {
         path: '/',
-        redirect: '/about-us',
+        redirect: '/navigation-2',
         meta: { guest: true }
     },
     {
@@ -46,6 +49,14 @@ const routes = [
         component: Subscribe,
         meta: { guest: true }
     },
+
+    {
+        path: '/navigation-3',
+        name: 'navigation-3',
+        component: Navigation3,
+        meta: { guest: true }
+    },
+
     { 
         path: '/:pathMatch(.*)', 
         component: NotFoundComponent ,
@@ -58,16 +69,16 @@ const routes = [
         meta: { guest: true }
     },
     {
-        path: '/product-list',
-        name: 'product-list',
-        component: ProductList,
+        path: '/navigation-1',
+        name: 'navigation-1',
+        component: Navigation1,
         meta: { guest: true }
     },
     {
-        path: '/basket-items',
-        name: 'basket-items',
-        component: BasketItems,
-        meta: { guest: (permissions !== null && permissions !== undefined && permissions.length > 0 ? permissions.includes('basketItems-crud') : false) }
+        path: '/crud-template',
+        name: 'crud-template',
+        component: CrudTemplate,
+        meta: { guest: true }
     },
     {
         path: '/basket',
@@ -161,9 +172,9 @@ const routes = [
         meta: { guest: (permissions !== null && permissions !== undefined && permissions.length > 0 ? permissions.includes('users-crud') : false) }
     },
     {
-        path: '/about-us',
-        name: 'about-us',
-        component: Dashboard,
+        path: '/navigation-2',
+        name: 'navigation-2',
+        component: Navigation2,
         meta: { guest: true }
     }
 ];
